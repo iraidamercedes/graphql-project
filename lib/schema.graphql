@@ -1,0 +1,14 @@
+type Malware {
+    _id: ID!
+    title : String!
+    family : String
+    year : Int
+    description: String!
+    media : String
+}
+type Query {
+    "Devuelve la información de malwares"
+    getMalwares: [Malware]
+    "Devuelve un malware"
+    getMalware(id: ID): Malware
+}
