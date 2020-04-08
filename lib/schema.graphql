@@ -6,9 +6,57 @@ type Malware {
     description: String!
     media : String
 }
+
+type Company {
+    _id: ID!
+    title : String!
+    country : String
+}
+
 type Query {
     "Devuelve la información de malwares"
     getMalwares: [Malware]
     "Devuelve un malware"
-    getMalware(id: ID): Malware
+    getMalware(id: ID!): Malware
+    "Devuelve la información de empresas"
+    getCompanies: [Company]
+    "Devuelve una empresa"
+    getCompany(id: ID!): Company
+}
+
+input MalwareInput {
+    title : String!
+    family : String
+    year : Int
+    description: String!
+    media : String
+}
+
+input MalwareEditInput {
+    title : String
+    family : String
+    year : Int
+    description: String
+    media : String
+}
+
+input CompanyInput {
+    title : String!
+    country : String
+}
+
+input CompanyEditInput {
+    title : String!
+    country : String
+}
+
+type Mutation {
+    "Crear un malware"
+    createMalware(input: MalwareInput!): Malware
+    "Edita un malware"
+    editMalware(_id: ID!, input: MalwareEditInput): Malware    
+    "Crear una compañia"
+    createCompany(input: CompanyInput!): Company
+    "Edita una compañía"
+    editCompany(_id: ID!, input: CompanyEditInput): Company 
 }
