@@ -5,6 +5,7 @@ type Malware {
     year : Int
     description: String!
     media : String
+    info_provider: [Company]
 }
 
 type Company {
@@ -59,4 +60,6 @@ type Mutation {
     createCompany(input: CompanyInput!): Company
     "Edita una compañía"
     editCompany(_id: ID!, input: CompanyEditInput): Company 
+    "Agrega un proveedor de información a un malware"
+    addProvider(malwareID: ID!, companyID: ID!): Malware
 }
