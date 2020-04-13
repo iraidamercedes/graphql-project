@@ -10,17 +10,31 @@ type Malware {
     _id: ID!
     title : String!
     family : String
-    year : Int
+    year : Int @deprecated
     description: String!
     media : String
     info_provider: [Company]
     severity: Severity
 }
 
-type Company {
+interface Provider {
     _id: ID!
     title : String!
     country : String
+}
+
+type Company implements Provider {
+    _id: ID!
+    title : String!
+    country : String
+    logo: String
+}
+
+type Organization implements Provider {
+    _id: ID!
+    title : String!
+    country : String
+    webpage: String
 }
 
 type Query {
@@ -29,9 +43,9 @@ type Query {
     "Devuelve un malware"
     getMalware(id: ID!): Malware
     "Devuelve la información de empresas"
-    getCompanies: [Company]
+    getProviders: [Provider]
     "Devuelve una empresa"
-    getCompany(id: ID!): Company
+    getProvider(id: ID!): Provider
 }
 
 input MalwareInput {
@@ -51,14 +65,18 @@ input MalwareEditInput {
     media : String
 }
 
-input CompanyInput {
+input ProviderInput {
     title : String!
     country : String
+    logo: String
+    webpage: String
 }
 
-input CompanyEditInput {
+input ProviderEditInput {
     title : String!
     country : String
+    logo: String
+    webpage: String
 }
 
 type Mutation {
@@ -66,10 +84,10 @@ type Mutation {
     createMalware(input: MalwareInput!): Malware
     "Edita un malware"
     editMalware(_id: ID!, input: MalwareEditInput): Malware    
-    "Crear una compañia"
-    createCompany(input: CompanyInput!): Company
+    "Crear un proveedor"
+    createProvider(input: ProviderInput!): Provider
     "Edita una compañía"
-    editCompany(_id: ID!, input: CompanyEditInput): Company 
+    editProvider(_id: ID!, input: ProviderEditInput): Provider
     "Agrega un proveedor de información a un malware"
     addProvider(malwareID: ID!, companyID: ID!): Malware
 }
