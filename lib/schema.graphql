@@ -6,6 +6,8 @@ enum Severity{
     low
 }
 
+union GlobalSearch = Malware | Company | Organization
+
 type Malware {
     _id: ID!
     title : String!
@@ -46,6 +48,8 @@ type Query {
     getProviders: [Provider]
     "Devuelve una empresa"
     getProvider(id: ID!): Provider
+    "Ejecuta una búsqueda global"
+    searchItems(keyword: String!): [GlobalSearch]
 }
 
 input MalwareInput {
