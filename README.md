@@ -15,7 +15,7 @@ In this project uses certain characteristic of GraphQL languages:
 - Schema directives
 - Unions
 
-## **|** Connect to the database.
+## :cherry_blossom: **|** Connect to the database. 
 
 I connect this app whit a local installation of MongoDb.
 
@@ -55,7 +55,7 @@ Malwares
 $
 ```
 
-## **|** How to deploy it?
+## :cherry_blossom:  **|** How to deploy it?
 
 1. Use  `git clone`. to have a copy of the repository on your machine.
    
@@ -70,7 +70,7 @@ Here's a screenshot of the API running:
 ![alt text][api]
 
 
-## **|** Use.
+## :cherry_blossom:  **|** Use.
 
 ### Queries example:
 
