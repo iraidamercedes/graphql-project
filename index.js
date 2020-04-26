@@ -26,7 +26,7 @@ app.use(cors())
 app.use('/api', gqlMiddleware({
     schema : schema,
     rootValue: resolvers,
-    graphiql: isDev
+    graphiql: true
 }))
 
 app.listen(port, () => {
